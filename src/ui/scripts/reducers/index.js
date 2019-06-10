@@ -8,10 +8,10 @@ import views from './views'
 import referrers from './referrers'
 
 export default combineReducers({
-	modals,
-	token,
-	route,
-	domains,
-	views,
-	referrers
+  modals,
+  token,
+  route,
+  domains,
+  views,
+  referrers
 })

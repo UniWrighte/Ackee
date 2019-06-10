@@ -9,45 +9,43 @@ import Text from '../Text'
 import PresentationBarChart from '../presentations/PresentationBarChart'
 
 const CardViews = (props) => {
+  // Index of the active element
+  const [ active, setActive ] = useState(0)
 
-	// Index of the active element
-	const [ active, setActive ] = useState(0)
+  const onEnter = (index) => setActive(index)
+  const onLeave = () => setActive(0)
 
-	const onEnter = (index) => setActive(index)
-	const onLeave = () => setActive(0)
-
-	return (
-		h('div', {
-			className: classNames({
-				'card': true,
-				'card--wide': props.wide === true
-			})
-		},
-			h('div', { className: 'card__inner' },
-				h(Headline, {
-					type: 'h2',
-					small: true,
-					className: 'color-white'
-				}, props.headline),
-				h(Text, {
-					spacing: false
-				}, relativeDate(active)),
-				h(PresentationBarChart, {
-					items: props.items,
-					active: active,
-					onEnter,
-					onLeave
-				})
-			)
-		)
-	)
-
+  return (
+    h('div', {
+      className: classNames({
+        'card': true,
+        'card--wide': props.wide === true
+      })
+    },
+    h('div', { className: 'card__inner' },
+      h(Headline, {
+        type: 'h2',
+        small: true,
+        className: 'color-white'
+      }, props.headline),
+      h(Text, {
+        spacing: false
+      }, relativeDate(active)),
+      h(PresentationBarChart, {
+        items: props.items,
+        active: active,
+        onEnter,
+        onLeave
+      })
+    )
+    )
+  )
 }
 
 CardViews.propTypes = {
-	wide: PropTypes.bool,
-	headline: PropTypes.string.isRequired,
-	items: PropTypes.array.isRequired
+  wide: PropTypes.bool,
+  headline: PropTypes.string.isRequired,
+  items: PropTypes.array.isRequired
 }
 
 export default CardViews

@@ -25,28 +25,26 @@ const ConnectedMain = connect(mapStateToProps, mapDispatchToProps)(Main)
 const container = document.querySelector('#main')
 
 store.subscribe(() => {
+  const currentState = store.getState()
 
-	const currentState = store.getState()
-
-	storage.save({
-		token: {
-			...initialTokenState(),
-			value: currentState.token.value
-		},
-		route: {
-			...initialRouteState(),
-			value: currentState.route.value
-		},
-		referrers: {
-			...initialReferrersState(),
-			sorting: currentState.referrers.sorting
-		}
-	})
-
+  storage.save({
+    token: {
+      ...initialTokenState(),
+      value: currentState.token.value
+    },
+    route: {
+      ...initialRouteState(),
+      value: currentState.route.value
+    },
+    referrers: {
+      ...initialReferrersState(),
+      sorting: currentState.referrers.sorting
+    }
+  })
 })
 
 const App = h(Provider, { store },
-	h(ConnectedMain)
+  h(ConnectedMain)
 )
 
 render(App, container)

@@ -8,32 +8,28 @@ const server = require('./server')
 const signale = require('./utils/signale')
 
 const port = process.env.PORT || 3000
-const url = `http://localhost:${ port }`
+const url = `http://localhost:${port}`
 
 mongoose.set('useFindAndModify', false)
 
-server.on('listening', () => signale.watch(`Listening on ${ url }`))
+server.on('listening', () => signale.watch(`Listening on ${url}`))
 server.on('error', (err) => signale.fatal(err))
 
-signale.await(`Connecting to ${ process.env.MONGODB }`)
+signale.await(`Connecting to ${process.env.MONGODB}`)
 
 mongoose.connect(process.env.MONGODB, {
 
-	useNewUrlParser: true,
-	useCreateIndex: true,
-	reconnectTries: Number.MAX_VALUE,
-	reconnectInterval: 1000
+  useNewUrlParser: true,
+  useCreateIndex: true,
+  reconnectTries: Number.MAX_VALUE,
+  reconnectInterval: 1000
 
 }).then(() => {
+  signale.success(`Connected to ${process.env.MONGODB}`)
+  signale.start(`Starting the server`)
 
-	signale.success(`Connected to ${ process.env.MONGODB }`)
-	signale.start(`Starting the server`)
-
-	server.listen(port)
-
+  server.listen(port)
 }).catch((err) => {
-
-	signale.fatal(err)
-	process.exit(1)
-
+  signale.fatal(err)
+  process.exit(1)
 })
