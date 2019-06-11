@@ -10,8 +10,8 @@ const response = (entry) => ({
   data: {
     id: entry.id,
     title: entry.title,
-    created: entry.created,
-    updated: entry.updated
+    created: entry.createdAt,
+    updated: entry.updatedAt
   }
 })
 
