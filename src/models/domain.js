@@ -7,7 +7,8 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.UUID,
       defaultValue: DataTypes.UUIDV4
     },
-    title: DataTypes.STRING
+    title: DataTypes.STRING,
+    host: DataTypes.STRING
   }, {})
   Domain.associate = function (models) {
     // associations can be defined here

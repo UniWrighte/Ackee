@@ -1,6 +1,7 @@
 'use strict'
 
 const { send, json, createError } = require('micro')
+const uuidv3 = require('uuid/v3')
 
 const messages = require('../utils/messages')
 const domains = require('../database/domains')
@@ -22,7 +23,7 @@ const responses = (entries) => ({
 
 const add = async (req, res) => {
   const data = await json(req)
-
+  data.domainId = uuidv3(data.host, uuidv3.DNS)
   let entry
 
   try {
