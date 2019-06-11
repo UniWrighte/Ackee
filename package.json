@@ -37,6 +37,8 @@
     "mongoose": "^5.5.7",
     "normalize.css": "^8.0.0",
     "permit": "^0.2.4",
+    "pg": "^7.11.0",
+    "pg-hstore": "^2.3.3",
     "prop-types": "^15.7.2",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
@@ -46,6 +48,7 @@
     "redux-thunk": "^2.3.0",
     "rosid-handler-js": "^12.1.0",
     "rosid-handler-sass": "^6.0.4",
+    "sequelize": "^5.8.8",
     "shortid": "^2.2.14",
     "signale": "^1.4.0",
     "uuid": "^3.3.2"
